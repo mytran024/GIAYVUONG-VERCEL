@@ -3,7 +3,7 @@ import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { Vessel, Container, ContainerStatus, BusinessType, TransportVehicle, UnitType } from '../types';
 import { ICONS } from '../constants';
 import { displayDate, processImportData } from '../services/dataService';
-import * as XLSX from 'https://esm.sh/xlsx';
+import * as XLSX from 'xlsx';
 
 export const StatusBadge: React.FC<{ status: ContainerStatus }> = ({ status }) => {
   const isCompleted = status === ContainerStatus.COMPLETED;
