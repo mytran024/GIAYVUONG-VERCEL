@@ -240,7 +240,7 @@ const Operations: React.FC<OperationsProps> = ({
             return (
               <div key={c.id} className={`grid grid-cols-12 items-center gap-4 px-6 py-4 rounded-2xl border transition-all hover:shadow-lg ${rowColorClass} ${borderClass}`}>
                 <div className="col-span-1 text-[11px] font-black text-slate-300 text-center">{filtered.length - index}</div>
-                <div className="col-span-3 flex flex-col">
+                <div className="col-span-2 flex flex-col">
                   <div className="flex items-center gap-2">
                     <span className={`font-black text-slate-800 uppercase leading-none ${isExport ? 'text-[11px]' : 'text-sm'}`}>{c.containerNo}</span>
                   </div>
@@ -263,19 +263,19 @@ const Operations: React.FC<OperationsProps> = ({
                   <p className={`text-[11px] font-black leading-none ${isDataMismatch ? 'text-indigo-600 underline decoration-2' : 'text-slate-800'}`}>{c.pkgs}K</p>
                   <p className="text-[11px] font-black text-blue-600 mt-1.5">{c.weight.toFixed(1)}T</p>
                 </div>
-                <div className="col-span-2 flex justify-end gap-2 items-center">
+                <div className="col-span-3 flex justify-end gap-2 items-center">
                   {isCompleted ? (
                     <button onClick={() => handleOpenGallery(c)} className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 text-emerald-600 border border-emerald-100 rounded-xl text-[9px] font-black uppercase tracking-widest hover:bg-emerald-600 hover:text-white transition-all shadow-sm">
                       <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                       XEM ẢNH
                     </button>
                   ) : (
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 items-center flex-nowrap">
                        <StatusBadge status={isDataMismatch ? ContainerStatus.MISMATCH : c.status} />
                        {!isExport && (
                           <button 
                             onClick={() => handleUrge(c.id)} 
-                            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all ${c.lastUrgedAt ? 'bg-emerald-600 text-white' : 'bg-slate-100 text-slate-400 hover:bg-blue-600 hover:text-white'}`}
+                            className={`flex items-center gap-1 px-2 py-1.5 rounded-lg text-[8px] font-black uppercase transition-all shadow-sm border whitespace-nowrap ${c.lastUrgedAt ? 'bg-emerald-600 text-white border-emerald-500' : 'bg-white text-slate-500 border-slate-200 hover:bg-blue-600 hover:text-white hover:border-blue-600'}`}
                           >
                             {c.lastUrgedAt ? <ICONS.CheckCircle className="w-3 h-3" /> : <ICONS.AlertTriangle className={`w-3 h-3 ${(detStatus === 'urgent' || !c.tkDnlOla) ? 'animate-pulse text-amber-500' : ''}`} />}
                             {c.lastUrgedAt ? 'ĐÃ NHẮC' : 'ĐÔN ĐỐC'}

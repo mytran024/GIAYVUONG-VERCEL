@@ -12,7 +12,7 @@ export const StatusBadge: React.FC<{ status: ContainerStatus }> = ({ status }) =
 
   if (isMismatch) {
     return (
-      <span className="px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest bg-red-50 text-red-600 border border-red-200 whitespace-nowrap">
+      <span className="px-2 py-0.5 rounded-lg text-[8px] font-black uppercase tracking-tight bg-red-50 text-red-600 border border-red-200 whitespace-nowrap">
         SAI LỆCH TK
       </span>
     );
@@ -20,19 +20,19 @@ export const StatusBadge: React.FC<{ status: ContainerStatus }> = ({ status }) =
 
   if (isIssue) {
     return (
-      <span className="px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest bg-amber-100 text-amber-600 border border-amber-100 whitespace-nowrap">
+      <span className="px-2 py-0.5 rounded-lg text-[8px] font-black uppercase tracking-tight bg-amber-100 text-amber-600 border border-amber-100 whitespace-nowrap">
         CÓ VẤN ĐỀ
       </span>
     );
   }
 
   return (
-    <span className={`px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest border whitespace-nowrap ${
+    <span className={`px-2 py-0.5 rounded-lg text-[8px] font-black uppercase tracking-tight border whitespace-nowrap ${
       isCompleted 
         ? "bg-emerald-50 text-emerald-600 border-emerald-100" 
         : "bg-slate-50 text-slate-400 border-slate-100"
     }`}>
-      {isCompleted ? "ĐÃ KHAI THÁC" : "CHƯA KHAI THÁC"}
+      {isCompleted ? "ĐÃ XONG" : "CHƯA LÀM"}
     </span>
   );
 };
