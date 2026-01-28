@@ -3,7 +3,7 @@ import React, { useState, useMemo } from 'react';
 import { Vessel, Container, ContainerStatus, ServicePrice } from '../types';
 import { ICONS } from '../constants';
 import { displayDate } from '../services/dataService';
-import * as XLSX from 'https://esm.sh/xlsx';
+import * as XLSX from 'xlsx';
 
 interface InventoryReportProps {
   containers: Container[];

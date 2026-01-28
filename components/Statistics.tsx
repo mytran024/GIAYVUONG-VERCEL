@@ -3,7 +3,7 @@ import React, { useState, useMemo } from 'react';
 import { Container, WorkOrder, WorkOrderType, Vessel, BusinessType } from '../types';
 import { ICONS } from '../constants';
 import { displayDate } from '../services/dataService';
-import * as XLSX from 'https://esm.sh/xlsx';
+import * as XLSX from 'xlsx';
 
 interface StatItem {
   id: string;
@@ -61,7 +61,7 @@ const Statistics: React.FC<{ containers: Container[]; workOrders: WorkOrder[]; v
         shift: wo.shift,
         method: wo.items[0]?.method || 'N/A',
         value: wo.type === WorkOrderType.LABOR ? 1 : (wo.items.reduce((s, i) => s + (parseFloat(i.weight) || 0), 0) / wo.workerNames.length),
-        typeLabel: wo.isHoliday ? 'CA LỄ' : (wo.isWeekend ? 'CA CUỐI TUẦN' : 'CA HC'),
+        typeLabel: wo.isHoliday ? 'CA LỄ' : (wo.isWeekend ? 'CA CUỐI TUẦN' : 'CA LỄ'),
         isMechanical: wo.type === WorkOrderType.MECHANICAL,
         isOutsourced: wo.isOutsourced,
         businessType: wo.businessType
@@ -85,7 +85,7 @@ const Statistics: React.FC<{ containers: Container[]; workOrders: WorkOrder[]; v
         <div className={`${viewMode === 'LIST' ? 'md:col-span-4' : 'md:col-span-7'} space-y-1.5`}>
           <label className="text-[8px] font-black text-slate-400 uppercase tracking-widest block ml-1">CHỌN CHUYẾN TÀU (TÀU - CHỦ HÀNG - LỊCH TÀU)</label>
           <select value={vesselFilter} onChange={(e) => setVesselFilter(e.target.value)} className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-4 font-black text-slate-700 text-[11px] outline-none shadow-sm">
-            <option value="ALL">TẤT CẢ CÁC CHUYẾN TÀU</option>
+            <option value="ALL">TẤT CẢ CÁC THÁNG</option>
             {vessels.map(v => <option key={v.id} value={v.id}>{v.vesselName} - {v.consignee} - ({displayDate(v.eta)} - {displayDate(v.etd)})</option>)}
           </select>
         </div>
